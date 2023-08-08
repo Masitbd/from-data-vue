@@ -18,7 +18,7 @@ const data =
       console.log(myobj.email)
       
       if (myobj.email === data.email && myobj.password === data.password) {
-        router.push('/home')
+        router.push('/wellcome')
       }
       else{
      alert('Incorrect Id or Password')
