@@ -1,16 +1,14 @@
 
 <script setup>
-import { reactive } from 'vue';
 import router from '../router';
 
 
-const data = reactive(
+const data = 
   {
-         
-         email: '',
-         password: ''
-  },
-)
+    email: '',
+    password: ''
+  }
+
 
 
   const  getData =()=>{
@@ -20,20 +18,17 @@ const data = reactive(
       console.log(myobj.email)
       
       if (myobj.email === data.email && myobj.password === data.password) {
-        router.push('/')
+        router.push('/registration')
       }
       else{
-     // alert('Incorrect Id or Password')
+     alert('Incorrect Id or Password')
       }
-
     }
-
   }
-  
-  </script>
+ </script>
 
 <template>
- <form @submit.prevent="registerUser" class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+ <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
     <h2 class="text-2xl font-semibold mb-4">Login</h2>
     <div class="mb-4">
       <label class="block mb-2" for="email">Email</label>
@@ -43,13 +38,11 @@ const data = reactive(
       <label class="block mb-2" for="password">Password</label>
       <input v-model="data.password" type="password" id="password" class="w-full p-2 border rounded-lg border-indigo-600">
     </div>
-    <button type="submit" @click="getData()" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+    <button @click="getData" class="bg-blue-500 text-white py-2 px-10 rounded-2xl hover:bg-blue-600">
       Login
     </button>
-
-    <p>no-1{{  data.email }}</p>
-    <p>{{  getData()}}</p>
-
-    <p v-if="data.email !== getData()">Emails not Match</p>
-  </form>
+    <router-link :to="{ name: 'registration'}">
+      <p class="pt-3">If you are new here? <span class="text-blue-500">register</span></p>
+    </router-link>
+</div>
 </template>
