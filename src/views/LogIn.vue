@@ -18,7 +18,7 @@ const data =
       console.log(myobj.email)
       
       if (myobj.email === data.email && myobj.password === data.password) {
-        router.push('/registration')
+        router.push('/home')
       }
       else{
      alert('Incorrect Id or Password')
@@ -28,7 +28,7 @@ const data =
  </script>
 
 <template>
- <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+ <div class="max-w-md mx-auto mt-8 p-6 bg-slate-100 rounded-lg shadow-md">
     <h2 class="text-2xl font-semibold mb-4">Login</h2>
     <div class="mb-4">
       <label class="block mb-2" for="email">Email</label>
@@ -46,3 +46,4 @@ const data =
     </router-link>
 </div>
 </template>
+

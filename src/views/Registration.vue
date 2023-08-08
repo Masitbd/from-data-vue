@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { reactive } from 'vue';
+import router from '../router';
 
 
 const data = reactive(
@@ -10,17 +11,19 @@ const data = reactive(
          password: ''
   },
 )
-
-
-  const  saveData =()=>{
-    return localStorage.setItem('formData', JSON.stringify(data))
-  }
-
-
+const  saveData =()=>{
+  try {
+        localStorage.setItem('formData', JSON.stringify(data));
+        router.push('/');
+    } catch (error) {
+        console.error('Error saving data to localStorage:', error);
+       
+    }
+}
 </script>
 
 <template>
- <form @submit.prevent="registerUser" class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+ <form @submit.prevent="registerUser" class="max-w-md mx-auto mt-8 p-6 bg-slate-100 rounded-lg shadow-md">
     <h2 class="text-2xl font-semibold mb-4">Register</h2>
     <div class="mb-4">
       <label class="block mb-2" for="username">Username</label>
@@ -34,10 +37,9 @@ const data = reactive(
       <label class="block mb-2" for="password">Password</label>
       <input v-model="data.password" type="password" id="password" class="w-full p-2 border rounded-lg border-indigo-600">
     </div>
-    <button type="submit" @click="saveData()" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+    <button type="submit" @click="saveData" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
       Register
+      
     </button>
-
-    <p>{{  data }}</p>
-  </form>
+</form>
 </template>
